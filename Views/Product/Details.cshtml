@@ -1,0 +1,96 @@
+@model ECommercePlatform.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Index">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center bg-light" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+                    <div>
+                        <i class="bi bi-image" style="font-size: 4rem; color: #6c757d;"></i>
+                        <p class="text-muted mt-2">Product Image Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <h1 class="mb-3">@Html.DisplayFor(model => model.Name)</h1>
+            
+            <div class="mb-3">
+                <h3 class="text-primary">$@Html.DisplayFor(model => model.Price)</h3>
+            </div>
+            
+            <div class="mb-4">
+                <h5>Description</h5>
+                <p class="lead">@Html.DisplayFor(model => model.Description)</p>
+            </div>
+              <div class="mb-3">
+                <div class="d-grid gap-2 d-md-flex">
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post" class="me-md-2">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="productId" value="@Model.Id" />
+                        <div class="input-group mb-2">
+                            <label class="input-group-text" for="quantity">Qty:</label>
+                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="10" 
+                                   class="form-control" style="max-width: 80px;" />
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </form>
+                    <button class="btn btn-outline-danger btn-lg" type="button">
+                        <i class="bi bi-heart"></i> Add to Wishlist
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to Products
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>Product Information</h4>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Product ID</th>
+                        <td>@Html.DisplayFor(model => model.Id)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Price</th>
+                        <td>$@Html.DisplayFor(model => model.Price)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Description</th>
+                        <td>@Html.DisplayFor(model => model.Description)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

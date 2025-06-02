@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"args": [
+				"build"
+			],
+			"command": "dotnet",
+			"group": "build",
+			"isBackground": false,
+			"label": "Build E-Commerce Platform",
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"type": "shell"
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appName": {
+      "value": "ecommerce-platform-2025"
+    },
+    "location": {
+      "value": "East US"
+    },
+    "sku": {
+      "value": "B1"
+    },
+    "sqlServerName": {
+      "value": "ecommerce-sql-2025"
+    },
+    "sqlDatabaseName": {
+      "value": "ECommercePlatformDB"
+    },
+    "sqlAdminUsername": {
+      "value": "ecommerceadmin"
+    },
+    "sqlAdminPassword": {
+      "value": "CHANGE_THIS_PASSWORD_123!"
+    }
+  }
+}
